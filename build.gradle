@@ -1,0 +1,54 @@
+import net.kyori.indra.IndraExtension
+
+plugins {
+    id("net.kyori.indra") version "3.0.0"
+    id("net.deltapvp.titan") version "1.0.20-SNAPSHOT"
+
+}
+group("net.deltapvp")
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+    maven {
+        url("https://repo.stellardrift.ca/repository/snapshots/")
+    }
+    maven {
+        url("https://repo.deltapvp.net/")
+    }
+    google()
+    mavenLocal()
+}
+
+dependencies {
+}
+
+indra {
+    github("powercasgamer", "TestProject") {
+        ci(true)
+    }
+    mitLicense()
+    javaVersions {
+        testWith(17, 18)
+        target(17)
+    }
+
+    configurePublications {
+        pom {
+            developers {
+                developer {
+                    id = "powercas_gamer"
+                    timezone = "America/Chicago"
+                }
+            }
+        }
+
+        versionMapping {
+            usage(Usage.JAVA_API) { fromResolutionOf(JavaPlugin.RUNTIME_CLASSPATH_CONFIGURATION_NAME) }
+            usage(Usage.JAVA_RUNTIME) { fromResolutionResult() }
+        }
+    }
+
+    publishSnapshotsTo("delta", "https://reposilite.deltapvp.net/snapshots/")
+    publishReleasesTo("delta", "https://reposilite.deltapvp.net/releases/")
+
+}
