@@ -2,7 +2,7 @@ import net.kyori.indra.IndraExtension
 
 plugins {
     id("net.kyori.indra") version "3.0.0"
-    id("net.deltapvp.titan") version "1.0.21-SNAPSHOT"
+    id("net.deltapvp.titan") version "1.0.25-SNAPSHOT"
 
 }
 group("net.deltapvp")
